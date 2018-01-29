@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using AlloyTemplates.Models.Blocks;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
@@ -15,6 +15,8 @@ namespace AlloyTemplates.Models.Pages
     [SiteImageUrl]
     public class SearchPage : SitePageData, IHasRelatedContent, ISearchPage
     {
+        public virtual int ResultLimit { get; set; }
+
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 310)]

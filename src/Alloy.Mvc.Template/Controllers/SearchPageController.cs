@@ -6,6 +6,7 @@ using EPiServer.Core;
 using EPiServer.Framework.Web;
 using EPiServer.Search;
 using AlloyTemplates.Business;
+using AlloyTemplates.Business.Search;
 using AlloyTemplates.Models.Pages;
 using AlloyTemplates.Models.ViewModels;
 using EPiServer.Find;
@@ -20,25 +21,36 @@ namespace AlloyTemplates.Controllers
     public class SearchPageController : PageControllerBase<SearchPage>
     {
 
-
-        public SearchPageController()
+        private readonly ISearchProvider _searchProvider;
+        private const int HitsContentPrPage = 10;
+        public SearchPageController(ISearchProvider searchProvider)
         {
-
+            _searchProvider = searchProvider;
         }
 
         [ValidateInput(false)]
         public ViewResult Index(SearchPage currentPage, string query)
         {
-            var model = new SearchContentModel(currentPage, query);
+            var model = new SearchPageViewModel(currentPage);
             if (string.IsNullOrEmpty(query))
             {
                 return View(model);
             }
 
-            var unifiedSearch = SearchClient.Instance.UnifiedSearchFor(query);
-            model.Results = unifiedSearch.GetResult();
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                var hitsPrPage = currentPage.ResultLimit != 0 ? currentPage.ResultLimit : HitsContentPrPage;
+                var searchQuery = new SearchParameters { SearchString = query, HitsPrPage = hitsPrPage };
+                var results = _searchProvider.ExecuteSearch(searchQuery);
+                model.Result = results;
+                model.Query = query;
+                model.Filter = results.Facets;
+            }
+
+
             return View(model);
         }
+
 
 
     }

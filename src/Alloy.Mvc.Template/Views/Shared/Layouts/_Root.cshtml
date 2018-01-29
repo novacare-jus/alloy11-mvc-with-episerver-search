@@ -1,4 +1,4 @@
-﻿@using System.Web.Optimization
+@using System.Web.Optimization
 @using EPiServer.Framework.Web.Mvc.Html
 @using AlloyTemplates.Business
 @model IPageViewModel<SitePageData>
@@ -45,5 +45,6 @@
             }
         </div>
         @Html.RequiredClientResources("Footer")
+        @RenderSection("BottomScript", false)
     </body>
 </html>

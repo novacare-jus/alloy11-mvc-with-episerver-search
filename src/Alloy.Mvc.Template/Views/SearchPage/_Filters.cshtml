@@ -1,0 +1,23 @@
+@*@model AlloyTemplates.Models.ViewModels.Filters.FilterMenu*@
+@model EPiServer.Find.Api.FacetResults
+
+@using EPiServer.Find
+@{
+    ViewBag.Title = "_Filters";
+    Layout = null;
+}
+
+<h2>_Filters</h2>
+
+@*@Html.Partial("FilterMenu/FilterMenuPageType", Model.Items)*@
+<ul>
+    <li >
+        <a href="#">Alle Typer (@Model..Count())</a>
+    </li>
+    @foreach (var facet in Model)
+    {
+        <li>
+            <a href="#">@facet.Name  </a>
+        </li>
+    }
+</ul>
