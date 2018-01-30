@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -39,12 +40,18 @@ namespace AlloyTemplates.Controllers
 
             if (!string.IsNullOrWhiteSpace(query))
             {
+               
                 var hitsPrPage = currentPage.ResultLimit != 0 ? currentPage.ResultLimit : HitsContentPrPage;
                 var searchQuery = new SearchParameters { SearchString = query, HitsPrPage = hitsPrPage };
                 var results = _searchProvider.ExecuteSearch(searchQuery);
                 model.Result = results;
                 model.Query = query;
-                model.Filter = results.Facets;
+                var filterModel = new FilterModel
+                {
+                    Facets = results.FacetResults,
+                    Title = "Spesifiser søket:"
+                };
+                model.Filter = filterModel;
             }
 
 

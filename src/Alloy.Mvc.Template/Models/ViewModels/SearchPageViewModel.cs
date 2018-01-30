@@ -16,9 +16,8 @@ namespace AlloyTemplates.Models.ViewModels
 
         public string Query { get; set; }
         public SearchResult Result { get; set; }
+        public FilterModel Filter { get; set; }
 
-        //public FilterModel Filter { get; set; }
-        public FacetResults Filter { get; set; }
 
 
     }

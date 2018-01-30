@@ -356,6 +356,7 @@
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\Initialization\StructureMapDependencyResolver.cs" />
     <Compile Include="Business\Initialization\FindInitialization.cs" />
+    <Compile Include="Business\Search\FilterBy.cs" />
     <Compile Include="Business\Search\IFilterModel.cs" />
     <Compile Include="Business\Search\ISearchProvider.cs" />
     <Compile Include="Business\Search\SearchParameters.cs" />
@@ -427,7 +428,7 @@
     <Compile Include="Models\SiteImageUrl.cs" />
     <Compile Include="Models\ViewModels\ContactBlockModel.cs" />
     <Compile Include="Models\ViewModels\ContentRenderingErrorModel.cs" />
-    <Compile Include="Models\ViewModels\Filters\FilterMenu.cs" />
+    <Compile Include="Models\ViewModels\Filters\FacetItem.cs" />
     <Compile Include="Business\Search\FilterModel.cs" />
     <Compile Include="Models\ViewModels\ImageViewModel.cs" />
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
@@ -522,7 +523,6 @@
     <Content Include="Views\SearchPage\Index.cshtml" />
     <Content Include="Views\SearchPage\_Filters.cshtml" />
     <Content Include="Views\Shared\FilterMenu\FilterMenuPageType.cshtml" />
-    <Content Include="Views\Shared\FilterMenu\FilterMenuPageTypeItem.cshtml" />
     <None Include="Views\_ReadMe.txt" />
     <Content Include="web.config">
       <SubType>Designer</SubType>

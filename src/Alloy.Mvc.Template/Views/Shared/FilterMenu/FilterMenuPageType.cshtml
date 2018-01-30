@@ -1,8 +1,10 @@
-@model List<AlloyTemplates.Models.ViewModels.Filters.FilterMenuItem>
+@model List<AlloyTemplates.Models.ViewModels.Filters.FacetItem>
+    
 
-<h2>FilterMenu</h2>
 
-@foreach (var item in Model)
-{
-    @Html.Partial("FilterMenu/FilterMenuPageTypeItem", item)
-}
+        @foreach (var facet in Model)
+        {
+            <li>
+                <a href="#">@facet.Name (@facet.Count)  </a>
+            </li>
+        }
