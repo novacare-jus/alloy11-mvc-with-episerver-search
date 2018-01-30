@@ -23,7 +23,7 @@ namespace AlloyTemplates.Controllers
     {
 
         private readonly ISearchProvider _searchProvider;
-        private const int HitsContentPrPage = 10;
+        private const int HitsContentPrPage = 40;
         public SearchPageController(ISearchProvider searchProvider)
         {
             _searchProvider = searchProvider;
@@ -37,9 +37,6 @@ namespace AlloyTemplates.Controllers
             {
                 return View(model);
             }
-
-            if (!string.IsNullOrWhiteSpace(query))
-            {
                
                 var hitsPrPage = currentPage.ResultLimit != 0 ? currentPage.ResultLimit : HitsContentPrPage;
                 var searchQuery = new SearchParameters { SearchString = query, HitsPrPage = hitsPrPage };
@@ -52,7 +49,7 @@ namespace AlloyTemplates.Controllers
                     Title = "Spesifiser søket:"
                 };
                 model.Filter = filterModel;
-            }
+          
 
 
             return View(model);
