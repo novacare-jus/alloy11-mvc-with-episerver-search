@@ -42,7 +42,7 @@ namespace AlloyTemplates.Business.Search
                 .FilterFacet(FilterBy.LandingPages, x => x.MatchType(typeof(LandingPage)))
                 .FilterFacet(FilterBy.ContactPages, x => x.MatchType(typeof(ContactPage)))
                 .Take(searchParams.HitsPrPage)
-                .GetResult();
+               .GetResult();
 
 
             var result = new SearchResult();

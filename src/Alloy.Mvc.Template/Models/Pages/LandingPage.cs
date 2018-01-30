@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
@@ -14,6 +14,7 @@ namespace AlloyTemplates.Models.Pages
     [SiteImageUrl]
     public class LandingPage : SitePageData
     {
+
         [Display(
             GroupName = SystemTabNames.Content,
             Order=310)]
