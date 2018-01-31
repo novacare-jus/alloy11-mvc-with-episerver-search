@@ -8,7 +8,6 @@ namespace AlloyTemplates.Business.Search
     public class FilterModel : IFilterModel
     {
         public string Title { get; set; }
-        public string Url { get; set; }
-        public List<FacetItem> Facets { get; set; }
+        public List<FacetItem> PageTypeFacets { get; set; }
     }
 }

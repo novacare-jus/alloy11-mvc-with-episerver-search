@@ -1,10 +1,10 @@
 @model List<AlloyTemplates.Models.ViewModels.Filters.FacetItem>
-    
-
 
         @foreach (var facet in Model)
         {
             <li>
-                <a href="#">@facet.Name (@facet.Count)  </a>
+                
+                @Html.ContentLink(string.Format("{0} ({1})", facet.Name, facet.Count), ContentHelper.GetSearchPage().PageLink, new {query = ViewBag.Query, filter = facet.Name}, null)
+
             </li>
         }

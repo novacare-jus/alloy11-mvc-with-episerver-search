@@ -10,8 +10,7 @@ namespace AlloyTemplates.Business.Search
     public interface IFilterModel
     {
         string Title { get; set; }
-        string Url { get; set; }
-        List<FacetItem> Facets { get; set; }
+        List<FacetItem> PageTypeFacets { get; set; }
        
     }
 }

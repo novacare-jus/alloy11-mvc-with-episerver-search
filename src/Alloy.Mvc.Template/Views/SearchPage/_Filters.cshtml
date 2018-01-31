@@ -1,11 +1,7 @@
 @model AlloyTemplates.Business.Search.FilterModel
-@{
-    ViewBag.Title = "_Filters";
-    Layout = null;
-}
 
 <h2>@Model.Title</h2>
 
 <ul>
-    @Html.Partial("FilterMenu/FilterMenuPageType", Model.Facets)
+    @Html.Partial("~/Views/Shared/FilterMenu/FilterMenuPageType.cshtml", Model.PageTypeFacets)
 </ul>

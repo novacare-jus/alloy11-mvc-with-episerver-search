@@ -348,6 +348,7 @@
     <Compile Include="Business\Channels\DisplayResolutions.cs" />
     <Compile Include="Business\Channels\MobileChannel.cs" />
     <Compile Include="Business\Channels\WebChannel.cs" />
+    <Compile Include="Business\Extentions\PageReferenceExtentions.cs" />
     <Compile Include="Business\Initialization\BundleConfig.cs" />
     <Compile Include="Business\Initialization\CustomizedRenderingInitialization.cs" />
     <Compile Include="Business\Initialization\DependencyResolverInitialization.cs" />
@@ -356,15 +357,16 @@
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\Initialization\StructureMapDependencyResolver.cs" />
     <Compile Include="Business\Initialization\FindInitialization.cs" />
-    <Compile Include="Business\Search\FilterBy.cs" />
+    <Compile Include="Business\Search\QueryStringModel.cs" />
     <Compile Include="Business\Search\IFilterModel.cs" />
-    <Compile Include="Business\Search\ISearchProvider.cs" />
+    <Compile Include="Business\Search\ISearchService.cs" />
     <Compile Include="Business\Search\SearchParameters.cs" />
     <Compile Include="Business\Search\SearchResult.cs" />
-    <Compile Include="Business\Search\SearchProvider.cs" />
+    <Compile Include="Business\Search\SearchService.cs" />
     <Compile Include="Business\Search\ISearchResultItem.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchPageController.cs" />
+    <Compile Include="Helpers\ContentHelper.cs" />
     <Compile Include="Models\Pages\ISearchPage.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
     <Compile Include="Business\Rendering\ErrorHandlingContentRenderer.cs" />
@@ -450,6 +452,7 @@
     <Content Include="favicon.ico" />
     <None Include="Models\Blocks\_ReadMe.txt" />
     <None Include="Models\Pages\_ReadMe.txt" />
+    <Content Include="IndexingService\IndexingService.svc" />
     <Content Include="modules\_protected\EPiServer.Search.Cms\IndexContent.aspx" />
     <Content Include="Resources\Javascripts\alloy.search.js" />
     <Content Include="Resources\LanguageFiles\Display.xml" />
@@ -503,7 +506,9 @@
     <Content Include="Static\jwplayer\preview.jpg" />
     <Content Include="Static\jwplayer\video.mp4" />
     <Content Include="Views\Shared\DisplayTemplates\_ReadMe.txt" />
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Views\VideoFile\Index.cshtml" />
     <Content Include="Views\Shared\TemplateError.cshtml" />
@@ -521,8 +526,9 @@
     <Content Include="modules\_protected\CMS\web.config" />
     <Content Include="modules\_protected\CMS\CMS.zip" />
     <Content Include="Views\SearchPage\Index.cshtml" />
-    <Content Include="Views\SearchPage\_Filters.cshtml" />
     <Content Include="Views\Shared\FilterMenu\FilterMenuPageType.cshtml" />
+    <Content Include="Views\SearchPage\_Result.cshtml" />
+    <Content Include="Views\SearchPage\_Filters.cshtml" />
     <None Include="Views\_ReadMe.txt" />
     <Content Include="web.config">
       <SubType>Designer</SubType>
@@ -537,9 +543,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="Web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <languages>
   <language name="English" id="en">
     <contenttypes>
@@ -61,6 +61,11 @@
       <searchpage>
         <name>Search Page</name>
         <description>Used to provide on-site search features</description>
+        <properties>
+          <ResultLimit>
+            <caption>Antall søkeresultat pr. side</caption>
+          </ResultLimit>
+        </properties>
       </searchpage>
       <startpage>
         <name>Start Page</name>

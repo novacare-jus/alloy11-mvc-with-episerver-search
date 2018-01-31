@@ -1,52 +1,56 @@
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EPiServer.Core;
-using EPiServer.Framework.Web;
-using EPiServer.Search;
-using AlloyTemplates.Business;
 using AlloyTemplates.Business.Search;
 using AlloyTemplates.Models.Pages;
 using AlloyTemplates.Models.ViewModels;
-using EPiServer.Find;
-using EPiServer.Find.Framework;
+using EPiServer;
 using EPiServer.Web;
-using EPiServer.Web.Hosting;
-using EPiServer.Web.Mvc.Html;
-using EPiServer.Web.Routing;
+using Microsoft.Owin;
+
 
 namespace AlloyTemplates.Controllers
 {
     public class SearchPageController : PageControllerBase<SearchPage>
     {
-
-        private readonly ISearchProvider _searchProvider;
+        private readonly IContentLoader _contentLoader;
+        private readonly ISearchService _searchProvider;
         private const int HitsContentPrPage = 40;
-        public SearchPageController(ISearchProvider searchProvider)
+        public SearchPageController(ISearchService searchProvider, IContentLoader contentLoader)
         {
             _searchProvider = searchProvider;
+            _contentLoader = contentLoader;
         }
 
         [ValidateInput(false)]
-        public ViewResult Index(SearchPage currentPage, string query)
+        public ViewResult Index(SearchPage currentPage)
         {
             var model = new SearchPageViewModel(currentPage);
+            var query = Request.Params[QueryStringModel.Query];
+            var filter = Request.Params[QueryStringModel.Filter];
+            query = Server.HtmlEncode(query);
+            filter = Server.HtmlEncode(filter);
+
             if (string.IsNullOrEmpty(query))
             {
                 return View(model);
             }
-               
-                var hitsPrPage = currentPage.ResultLimit != 0 ? currentPage.ResultLimit : HitsContentPrPage;
-                var searchQuery = new SearchParameters { SearchString = query, HitsPrPage = hitsPrPage };
+            ViewBag.Query = query;
+            ViewBag.Filter = filter ?? string.Empty;
+
+
+
+            var hitsPrPage = currentPage.ResultLimit != 0 ? currentPage.ResultLimit : HitsContentPrPage;
+                var searchQuery = new SearchParameters { SearchString = query, HitsPrPage = hitsPrPage, FilterParam = filter};
                 var results = _searchProvider.ExecuteSearch(searchQuery);
                 model.Result = results;
                 model.Query = query;
                 var filterModel = new FilterModel
                 {
-                    Facets = results.FacetResults,
-                    Title = "Spesifiser søket:"
+                    PageTypeFacets = results.FacetResults,
+                    Title = "Spesifiser søket:",
+
                 };
                 model.Filter = filterModel;
           
