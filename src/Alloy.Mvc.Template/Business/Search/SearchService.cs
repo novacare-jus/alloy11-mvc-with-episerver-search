@@ -66,22 +66,22 @@ namespace AlloyTemplates.Business.Search
                 switch (searchParams.FilterParam)
                 {
                     case QueryStringModel.FilterBy.ArticlePages:
-                        query.FilterHits(x => x.MatchType(typeof(ArticlePage)));
+                        query = query.Filter(x => x.MatchType(typeof(ArticlePage)));
                         break;
                     case QueryStringModel.FilterBy.NewsPages:
-                        query.FilterHits(x => x.MatchType(typeof(NewsPage)));
+                        query = query.FilterHits(x => x.MatchType(typeof(NewsPage)));
                         break;
                     case QueryStringModel.FilterBy.ProductPages:
-                        query.FilterHits(x => x.MatchType(typeof(ProductPage)));
+                        query = query.FilterHits(x => x.MatchType(typeof(ProductPage)));
                         break;
                     case QueryStringModel.FilterBy.StandardPages:
-                        query.FilterHits(x => x.MatchType(typeof(StandardPage)));
+                        query = query.FilterHits(x => x.MatchType(typeof(StandardPage)));
                         break;
                     case QueryStringModel.FilterBy.LandingPages:
-                        query.FilterHits(x => x.MatchType(typeof(LandingPage)));
+                        query = query.FilterHits(x => x.MatchType(typeof(LandingPage)));
                         break;
                     case QueryStringModel.FilterBy.ContactPages:
-                        query.FilterHits(x => x.MatchType(typeof(ContactPage)));
+                        query = query.FilterHits(x => x.MatchType(typeof(ContactPage)));
                         break;
 
                     default:
@@ -89,6 +89,7 @@ namespace AlloyTemplates.Business.Search
                 }
             }
 
+            query = query.ApplyBestBets();
             query = query.Skip((searchParams.page - 1) * searchParams.HitsPrPage).Take(searchParams.HitsPrPage);
            var searchResults = query.GetResult(hitSpec);
             return searchResults;

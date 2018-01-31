@@ -3,7 +3,7 @@ namespace AlloyTemplates.Business.Search
 {
     public static class QueryStringModel
     {
-        public const string Query = "q";
+        public const string Query = "query";
         public const string Filter = "filter";
         public static class FilterBy
         {
