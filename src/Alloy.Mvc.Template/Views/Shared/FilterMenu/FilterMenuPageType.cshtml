@@ -2,9 +2,12 @@
 
         @foreach (var facet in Model)
         {
-            <li>
-                
-                @Html.ContentLink(string.Format("{0} ({1})", facet.Name, facet.Count), ContentHelper.GetSearchPage().PageLink, new {query = ViewBag.Query, filter = facet.Name}, null)
+            if (facet.Count != 0)
+             {
+                 <li>
+                     @Html.ContentLink(string.Format("{0} ({1})", facet.Name, facet.Count), ContentHelper.GetSearchPage().PageLink, new {query = ViewBag.Query, filter = facet.Name}, null)
 
-            </li>
+                 </li>
+             }
+
         }
