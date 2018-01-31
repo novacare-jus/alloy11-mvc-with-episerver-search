@@ -1,8 +1,13 @@
-@model List<AlloyTemplates.Models.ViewModels.Filters.FilterMenuItem>
+@model List<AlloyTemplates.Models.ViewModels.Filters.FacetItem>
 
-<h2>FilterMenu</h2>
+        @foreach (var facet in Model)
+        {
+            if (facet.Count != 0)
+             {
+                 <li>
+                     @Html.ContentLink(string.Format("{0} ({1})", facet.Name, facet.Count), ContentHelper.GetSearchPage().PageLink, new {query = ViewBag.Query, filter = facet.Name}, null)
 
-@foreach (var item in Model)
-{
-    @Html.Partial("FilterMenu/FilterMenuPageTypeItem", item)
-}
+                 </li>
+             }
+
+        }

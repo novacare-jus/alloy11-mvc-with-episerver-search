@@ -19,10 +19,10 @@ namespace AlloyTemplates.Business.Initialization
             {
                 x.Scan(y =>{
                     y.TheCallingAssembly();
-                    y.AssemblyContainingType<ISearchProvider>();
+                    y.AssemblyContainingType<ISearchService>();
                     y.WithDefaultConventions();
                 });
-                x.For<ISearchProvider>().Use<SearchProvider>();
+                x.For<ISearchService>().Use<SearchService>();
 
 
             });

@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using AlloyTemplates.Business.Rendering;
 using EPiServer.Web;
 using EPiServer.Core;
+using EPiServer.DataAnnotations;
 
 namespace AlloyTemplates.Models.Pages
 {
@@ -14,13 +15,16 @@ namespace AlloyTemplates.Models.Pages
     [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-contact.png")]
     public class ContactPage : SitePageData, IContainerPage
     {
+
         [Display(GroupName = Global.GroupNames.Contact)]
         [UIHint(UIHint.Image)]
         public virtual ContentReference Image { get; set; }
 
+        [Searchable]
         [Display(GroupName = Global.GroupNames.Contact)]
         public virtual string Phone { get; set; }
-        
+
+        [Searchable]
         [Display(GroupName = Global.GroupNames.Contact)]
         [EmailAddress]
         public virtual string Email { get; set; }

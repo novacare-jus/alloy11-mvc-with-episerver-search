@@ -12,12 +12,13 @@ namespace AlloyTemplates.Business.Search
     {
 
         public List<SearchResultItem> Hits { get; set; }
-        public FacetResults Facets { get; set; }
+        public List<FacetItem> FacetResults { get; set; }
+        public string Query { get; set; }
 
         public SearchResult()
         {
             Hits = new List<SearchResultItem>();
-            Facets = new FacetResults();
+            FacetResults = new List<FacetItem>();
         }
     }
 

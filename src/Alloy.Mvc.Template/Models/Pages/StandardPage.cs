@@ -1,4 +1,4 @@
-﻿﻿using EPiServer.Core;
+﻿using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
@@ -12,12 +12,14 @@ namespace AlloyTemplates.Models.Pages
     [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-standard.png")]
     public class StandardPage : SitePageData
     {
+        [Searchable]
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 310)]
         [CultureSpecific]
         public virtual XhtmlString MainBody { get; set; }
 
+        [Searchable]
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 320)]

@@ -1,0 +1,19 @@
+@model AlloyTemplates.Business.Search.SearchResult 
+@if (Model != null)
+{
+    <p>Your search for <i> @Model.Query resulted in @Model.Hits.Count hits</i></p>
+    <div class="listResult">
+        <ul>
+            @foreach (var item in Model.Hits)
+            {
+                <li>
+                    <h4><a href="@item.Url">@item.Title</a></h4>
+                    @item.PreviewText
+                </li>
+            }
+
+
+        </ul>
+    </div>
+}
+
